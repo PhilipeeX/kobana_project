@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: kobana_project_development
+
+test:
+  <<: *default
+  database: kobana_project_test
+
+production:
+  <<: *default
+  database: kobana_project_production
+  username: kobana_project
+  password: <%= ENV["KOBANA_PROJECT_DATABASE_PASSWORD"] %>
