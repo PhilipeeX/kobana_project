@@ -6,7 +6,7 @@ module KobanaRequests
     end
 
     def call
-      @action == :index ? index_billets : "Unknown action: #{@action}"
+      @action == :index ? index_billets : "#{I18n.t('businesses.kobana_requests.unknown_action')}: #{@action}"
     end
 
     private

@@ -32,5 +32,4 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'rspec-rails'
-  gem 'shoulda-matchers', '~> 6.0'
 end
