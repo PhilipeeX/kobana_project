@@ -1,0 +1,23 @@
+<h1><%= t '.title' %></h1>
+
+<table>
+  <thead>
+  <tr>
+    <th><%= t '.status' %></th>
+    <th><%= t '.value' %></th>
+    <th><%= t '.due_date' %></th>
+    <th><%= t '.name' %></th>
+    <th><%= t '.cpf_cnpj' %></th>
+    <th><%= t '.state' %></th>
+    <th><%= t '.city' %></th>
+    <th><%= t '.cep' %></th>
+    <th><%= t '.address' %></th>
+    <th><%= t '.neighborhood' %></th>
+  </tr>
+  </thead>
+  <tbody>
+    <% @billets.each do |billet| %>
+      <%= render 'bank_billet', billet: billet %>
+    <% end %>
+  </tbody>
+</table>

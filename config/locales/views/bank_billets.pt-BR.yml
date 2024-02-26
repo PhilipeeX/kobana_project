@@ -1,0 +1,14 @@
+pt-BR:
+  bank_billets:
+    index:
+      title: 'Lista de Boletos'
+      status: "Status"
+      value: "Valor"
+      due_date: "Data de Vencimento"
+      name: "Nome"
+      cpf_cnpj: "CPF/CNPJ"
+      state: "Estado"
+      city: "Cidade"
+      cep: "CEP"
+      address: "Endereço"
+      neighborhood: "Bairro"
