@@ -1,8 +1,3 @@
-require 'webmock/rspec'
-require 'uri'
-require 'net/http'
-WebMock.disable_net_connect!(allow_localhost: true)
-WebMock.enable!
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

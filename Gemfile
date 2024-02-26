@@ -19,8 +19,6 @@ group :development, :test do
   gem 'rubocop-capybara', '~> 2.19'
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', '~> 2.25'
-  gem 'vcr'
-  gem 'webmock'
   gem 'ffaker', '~> 2.21'
 end
 
@@ -32,4 +30,7 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'rspec-rails'
+  gem 'rails-controller-testing'
+  gem 'webmock'
+  gem 'vcr'
 end

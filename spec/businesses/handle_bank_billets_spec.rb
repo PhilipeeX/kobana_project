@@ -1,9 +1,8 @@
 require 'rails_helper'
-require 'webmock/rspec'
 
 RSpec.describe KobanaRequests::HandleBankBillets do
   describe '#call' do
-    it 'returns expected response for private method index_billets' do
+    it 'returns expected response for private method index_billets', :vcr do
       result = KobanaRequests::HandleBankBillets.call(:index)
 
       expect(result).to be_an(Array)

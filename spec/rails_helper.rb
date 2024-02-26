@@ -32,11 +32,6 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.before(:suite) do
-    Dir[Rails.root.join('spec', 'fixtures', '**', '*.yml')].each do |file|
-      ActiveRecord::FixtureSet.create_fixtures(File.dirname(file), File.basename(file, '.yml'))
-    end
-  end
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
