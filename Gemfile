@@ -20,6 +20,8 @@ group :development, :test do
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', '~> 2.25'
   gem 'ffaker', '~> 2.21'
+  gem 'brakeman'
+  gem 'bundler-audit'
 end
 
 group :development do
