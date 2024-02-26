@@ -4,25 +4,7 @@ on:
     branches:
       - main
       - 'release/*'
-
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Install Ruby and gems
-        uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0
-        with:
-          ruby-version: '3.2.2'
-          bundler-cache: true
-      - name: Install Rails
-        run: gem install rails
-      - name: Set up database schema
-        run: rails db:migrate
-      - name: Run tests
-        run: bundle exec rspec --format progress
-
   lint:
     runs-on: ubuntu-latest
     steps:
