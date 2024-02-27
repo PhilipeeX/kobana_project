@@ -19,7 +19,7 @@ RSpec.describe KobanaRequests::HandleBankBillets do
 
       expect(result.code).to eq('201')
       body = JSON.parse(result.body)
-      expect(body).to include('amount' => 84.0, 'customer_person_name' => 'Thiago da Silva')
+      expect(body).to include('amount' => 190.25, 'customer_person_name' => 'Thiago da Silva')
     end
 
     it 'returns expected response for private method index_billets', :vcr do
@@ -45,12 +45,12 @@ RSpec.describe KobanaRequests::HandleBankBillets do
 
     it 'updates a bank billet with valid parameters on method update', :vcr do
       # TODO: Tornar esse id dinâmico
-      billet_id = 632_386
       params = {
+        id: 632_386,
         amount: 200.0
       }
 
-      result = KobanaRequests::HandleBankBillets.call(:update, billet_id, params)
+      result = KobanaRequests::HandleBankBillets.call(:update, params)
 
       expect(result.code).to eq('204')
       expect(result.body).to be_nil

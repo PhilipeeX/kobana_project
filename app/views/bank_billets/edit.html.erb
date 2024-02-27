@@ -1,4 +1,5 @@
-<%= form_with url: bank_billet_path(@billet_id), method: :patch do |form| %>
+<%= form_with url: bank_billet_path(session[:billet_id]), method: :patch do |form| %>
+  <%= form.hidden_field :id, value: session[:billet_id] %>
   <div>
     <%= form.label :amount %>
     <%= form.number_field :amount, step: 'any' %>

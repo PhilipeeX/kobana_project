@@ -7,7 +7,7 @@ class BankBilletsController < ApplicationController
   end
 
   def create
-    response = KobanaRequests::HandleBankBillets.call(:create, create_billet_params)
+    response = KobanaRequests::HandleBankBillets.call(:create, billet_params)
     response_data = BankBilletsHelper.process_response(response.body)
 
     if response_data[:success]
@@ -19,30 +19,26 @@ class BankBilletsController < ApplicationController
   end
 
   def edit
-    @billet_id = params[:id]
+    session[:billet_id] = params[:id]
   end
 
   def update
-    response = KobanaRequests::HandleBankBillets.call(:update, params[:id], update_billet_params)
+    response = KobanaRequests::HandleBankBillets.call(:update, billet_params)
+    response_data = BankBilletsHelper.process_update_response(response)
 
-    if response.code == '204'
+    if response_data[:success]
+      session.delete(:billet_id)
       redirect_to bank_billets_path, notice: t('.update')
     else
+      flash.now[:notice] = response_data[:error_messages]
       render :edit, status: :unprocessable_entity
     end
   end
 
-  def show
-
-  end
 
   private
 
-  def create_billet_params
-    params.permit(:amount, :expire_at, :description, :customer_person_name, :customer_cnpj_cpf, :customer_state, :customer_city_name, :customer_zipcode, :customer_address, :customer_neighborhood)
-  end
-
-  def update_billet_params
-    params.permit(:amount, :expire_at, :description)
+  def billet_params
+    params.permit(:id, :amount, :expire_at, :description, :customer_person_name, :customer_cnpj_cpf, :customer_state, :customer_city_name, :customer_zipcode, :customer_address, :customer_neighborhood)
   end
 end
