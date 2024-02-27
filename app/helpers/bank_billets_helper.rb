@@ -12,7 +12,7 @@ module BankBilletsHelper
       end
       { success: false, error_messages: error_messages.join('. ') }
     else
-      { success: false, error_messages: 'Erro desconhecido ao processar a resposta da API.' }
+      { success: false, error_messages: I18n.t('bank_billets_helper.error_message') }
     end
   end
 end
