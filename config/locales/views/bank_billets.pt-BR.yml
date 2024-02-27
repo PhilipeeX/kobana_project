@@ -1,6 +1,7 @@
 pt-BR:
   bank_billets:
     index:
+      create_bank_billet: 'Criar boleto'
       title: 'Lista de Boletos'
       status: "Status"
       value: "Valor"
