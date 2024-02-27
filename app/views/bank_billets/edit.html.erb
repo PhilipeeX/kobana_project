@@ -1,0 +1,18 @@
+<%= form_with url: bank_billet_path(@billet_id), method: :patch do |form| %>
+  <div>
+    <%= form.label :amount %>
+    <%= form.number_field :amount, step: 'any' %>
+  </div>
+
+  <div>
+    <%= form.label :expire_at %>
+    <%= form.date_field :expire_at %>
+  </div>
+
+  <div>
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+
+  <%= form.submit %>
+<% end %>
