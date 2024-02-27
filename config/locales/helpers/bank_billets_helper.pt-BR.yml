@@ -1,0 +1,3 @@
+pt-BR:
+  bank_billets_helper:
+    error_message: 'Erro desconhecido ao processar a resposta da API.'
