@@ -8,14 +8,12 @@ class BankBilletsController < ApplicationController
 
   def create
     response = KobanaRequests::HandleBankBillets.call(:create, billet_params)
-    if JSON.parse(response.body)['status'] == 'generating'
+    response_data = BankBilletsHelper.process_response(response.body)
+
+    if response_data[:success]
       redirect_to action: 'index'
-    elsif JSON.parse(response.body).include? 'errors'
-      errors = JSON.parse(response.body)['errors']
-      error_messages = errors.map do |field, messages|
-        "#{field}: #{messages.join(', ')}"
-      end
-      flash[:notice] = "Esses erros impediram a criação do boleto: #{error_messages.join('. ')}"
+    else
+      flash[:notice] = response_data[:error_messages]
       render :new, status: :unprocessable_entity
     end
   end
