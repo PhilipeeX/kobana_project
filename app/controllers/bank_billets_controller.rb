@@ -26,7 +26,7 @@ class BankBilletsController < ApplicationController
     response = KobanaRequests::HandleBankBillets.call(:update, params[:id], update_billet_params)
 
     if response.code == '204'
-      redirect_to bank_billets_path, notice: 'Boleto atualizado com sucesso'
+      redirect_to bank_billets_path, notice: t('.update')
     else
       render :edit, status: :unprocessable_entity
     end
