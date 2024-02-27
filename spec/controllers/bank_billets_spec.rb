@@ -55,4 +55,21 @@ RSpec.describe BankBilletsController, type: :controller do
       expect(assigns(:billets)).to be_an(Array)
     end
   end
+
+  describe 'PATCH #update' do
+    it 'updates bank_billets and returns status 302', :vcr do
+      patch :update, params: { id: 632_383, amount: 250.55 }
+
+      expect(response.status).to eq 302
+      expect(response).to redirect_to(bank_billets_path)
+      expect(flash[:notice]).to eq(I18n.t('bank_billets.update'))
+    end
+
+    xit 'doesnt update bank_billets with invalid params', :vcr do
+      patch :update, params: { id: 632_383, amount: 320.40, expire_at: '' }
+
+      expect(response).to have_http_status(422)
+      expect(response).to render_template('edit')
+    end
+  end
 end
