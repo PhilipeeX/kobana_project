@@ -1,21 +1,27 @@
 require 'rails_helper'
 
 RSpec.describe KobanaRequests::HandleBankBillets do
+  let(:valid_params) do
+    {
+      amount: 190.25,
+      expire_at: '2024-10-19',
+      customer_person_name: 'Thiago da Silva',
+      customer_cnpj_cpf: '01482558092',
+      customer_state: 'RJ',
+      customer_city_name: 'Rio de Janeiro',
+      customer_zipcode: '20751340',
+      customer_address: 'Rua Luís Vargas',
+      customer_neighborhood: 'Piedade'
+    }
+  end
+  let(:billet_id) do
+    response = KobanaRequests::HandleBankBillets.call(:create, valid_params)
+    JSON.parse(response.body)['id']
+  end
+
   describe '#call' do
     it 'creates a bank billet with valid parameters on method create_billet', :vcr do
-      params = {
-        amount: 190.25,
-        expire_at: '2024-10-19',
-        customer_person_name: 'Thiago da Silva',
-        customer_cnpj_cpf: '01482558092',
-        customer_state: 'RJ',
-        customer_city_name: 'Rio de Janeiro',
-        customer_zipcode: '20751340',
-        customer_address: 'Rua Luís Vargas',
-        customer_neighborhood: 'Piedade'
-      }
-
-      result = KobanaRequests::HandleBankBillets.call(:create, params)
+      result = KobanaRequests::HandleBankBillets.call(:create, valid_params)
 
       expect(result.code).to eq('201')
       body = JSON.parse(result.body)
@@ -44,9 +50,8 @@ RSpec.describe KobanaRequests::HandleBankBillets do
     end
 
     it 'updates a bank billet with valid parameters on method update', :vcr do
-      # TODO: Tornar esse id dinâmico
       params = {
-        id: 632_386,
+        id: billet_id,
         amount: 200.0
       }
 
@@ -54,6 +59,12 @@ RSpec.describe KobanaRequests::HandleBankBillets do
 
       expect(result.code).to eq('204')
       expect(result.body).to be_nil
+    end
+
+    it 'cancels a bank billet with valid parameters on method destroy', :vcr do
+      result = KobanaRequests::HandleBankBillets.call(:destroy, billet_id)
+
+      expect(result.code).to eq('204')
     end
 
     it 'returns "Unknown action" message' do

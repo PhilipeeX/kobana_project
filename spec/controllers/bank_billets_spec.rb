@@ -26,6 +26,11 @@ RSpec.describe BankBilletsController, type: :controller do
     customer_neighborhood: 'Piedade'
   }
 
+  let(:billet_id) do
+    response = KobanaRequests::HandleBankBillets.call(:create, valid_params)
+    JSON.parse(response.body)['id']
+  end
+
   describe 'POST #create' do
     context 'with valid parameters' do
       it 'creates a new BankBillet and redirects to index', :vcr do
@@ -56,9 +61,9 @@ RSpec.describe BankBilletsController, type: :controller do
     end
   end
 
-  describe 'PATCH #update' do
+  describe 'PUT #update' do
     it 'updates bank_billets and returns status 302', :vcr do
-      patch :update, params: { id: 632_383, amount: 250.55 }
+      put :update, params: { id: billet_id, amount: 250.55 }
 
       expect(response.status).to eq 302
       expect(response).to redirect_to(bank_billets_path)
@@ -66,10 +71,20 @@ RSpec.describe BankBilletsController, type: :controller do
     end
 
     xit 'doesnt update bank_billets with invalid params', :vcr do
-      patch :update, params: { id: 632_383, amount: 320.40, expire_at: '' }
+      put :update, params: { id: billet_id, amount: 320.40, expire_at: '' }
 
       expect(response).to have_http_status(422)
       expect(response).to render_template('edit')
+    end
+  end
+
+  describe 'PUT #destroy' do
+    it 'cancel bank_billet and returns status 302', :vcr do
+      delete :destroy, params: { id: billet_id }
+
+      expect(response.status).to eq 302
+      expect(response).to redirect_to(bank_billets_path)
+      expect(flash[:notice]).to eq(I18n.t('bank_billets.cancel_success'))
     end
   end
 end
