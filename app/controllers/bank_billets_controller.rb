@@ -11,6 +11,7 @@ class BankBilletsController < ApplicationController
     response_data = BankBilletsHelper.process_response(response.body)
 
     if response_data[:success]
+      flash[:notice] = t('.create')
       redirect_to action: 'index'
     else
       flash[:notice] = response_data[:error_messages]
