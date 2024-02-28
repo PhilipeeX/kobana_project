@@ -4,7 +4,7 @@ RSpec.describe KobanaRequests::HandleBankBillets do
   describe '#call' do
     it 'creates a bank billet with valid parameters on method create_billet', :vcr do
       params = {
-        amount: 84.0,
+        amount: 190.25,
         expire_at: '2024-10-19',
         customer_person_name: 'Thiago da Silva',
         customer_cnpj_cpf: '01482558092',
@@ -19,7 +19,7 @@ RSpec.describe KobanaRequests::HandleBankBillets do
 
       expect(result.code).to eq('201')
       body = JSON.parse(result.body)
-      expect(body).to include('amount' => 84.0, 'customer_person_name' => 'Thiago da Silva')
+      expect(body).to include('amount' => 190.25, 'customer_person_name' => 'Thiago da Silva')
     end
 
     it 'returns expected response for private method index_billets', :vcr do
@@ -42,6 +42,20 @@ RSpec.describe KobanaRequests::HandleBankBillets do
         )
       end
     end
+
+    it 'updates a bank billet with valid parameters on method update', :vcr do
+      # TODO: Tornar esse id dinâmico
+      params = {
+        id: 632_386,
+        amount: 200.0
+      }
+
+      result = KobanaRequests::HandleBankBillets.call(:update, params)
+
+      expect(result.code).to eq('204')
+      expect(result.body).to be_nil
+    end
+
     it 'returns "Unknown action" message' do
       result = KobanaRequests::HandleBankBillets.call(:unknown_action)
 

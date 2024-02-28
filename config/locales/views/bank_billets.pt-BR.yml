@@ -13,3 +13,5 @@ pt-BR:
       cep: "CEP"
       address: "Endereço"
       neighborhood: "Bairro"
+    edit:
+      title: 'Atualizando Boleto'

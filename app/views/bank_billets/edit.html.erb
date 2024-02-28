@@ -1,0 +1,20 @@
+<h1><%= t '.title' %></h1>
+<%= form_with url: bank_billet_path(session[:billet_id]), method: :patch do |form| %>
+  <%= form.hidden_field :id, value: session[:billet_id] %>
+  <div>
+    <%= form.label :amount %>
+    <%= form.number_field :amount, step: 'any' %>
+  </div>
+
+  <div>
+    <%= form.label :expire_at %>
+    <%= form.date_field :expire_at %>
+  </div>
+
+  <div>
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+
+  <%= form.submit %>
+<% end %>
