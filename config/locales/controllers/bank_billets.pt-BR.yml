@@ -1,3 +1,5 @@
 pt-BR:
   bank_billets:
     update: 'Boleto atualizado com sucesso'
+    cancel_success: 'Boleto cancelado com sucesso.'
+    cancel_failure: 'Não foi possível cancelar boleto'

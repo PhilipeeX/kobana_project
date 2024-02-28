@@ -35,6 +35,15 @@ class BankBilletsController < ApplicationController
     end
   end
 
+  def destroy
+    response = KobanaRequests::HandleBankBillets.call(:destroy, params[:id])
+    if response.code == '204'
+      redirect_to bank_billets_path, notice: t('.cancel_success')
+    else
+      redirect_to bank_billets_path, notice: t('.cancel_failure')
+    end
+  end
+
   private
 
   def billet_params

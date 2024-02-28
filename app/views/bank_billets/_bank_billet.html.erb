@@ -10,4 +10,6 @@
   <td><%= billet['customer_address'] %></td>
   <td><%= billet['customer_neighborhood'] %></td>
   <td><%= link_to 'editar', edit_bank_billet_path(billet['id']) %></td>
+  <td><%= link_to 'Cancelar', bank_billet_path(billet['id']),
+                  data: { turbo_method: :delete, turbo_confirm: 'Tem certeza que deseja cancelar esse boleto?' } %></td>
 </tr>

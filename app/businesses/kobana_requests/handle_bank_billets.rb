@@ -13,7 +13,9 @@ module KobanaRequests
       when :create
         request_api(:post, 'https://api-sandbox.kobana.com.br/v1/bank_billets', @params)
       when :update
-        request_api(:patch, "https://api-sandbox.kobana.com.br/v1/bank_billets/#{@params[:id]}", @params)
+        request_api(:put, "https://api-sandbox.kobana.com.br/v1/bank_billets/#{@params[:id]}", @params)
+      when :destroy
+        request_api(:put, "https://api-sandbox.kobana.com.br/v1/bank_billets/#{@params}/cancel")
       else
         "#{I18n.t('businesses.kobana_requests.unknown_action')}: #{@action}"
       end
@@ -39,7 +41,7 @@ module KobanaRequests
     def create_request(method, uri, body)
       request = create_http_request(method, uri)
       request_headers(request)
-      request_body(request, method, body) if [:post, :patch].include?(method)
+      request_body(request, method, body) if [:post, :put].include?(method)
       request
     end
 
@@ -49,8 +51,8 @@ module KobanaRequests
         Net::HTTP::Get.new(uri)
       when :post
         Net::HTTP::Post.new(uri)
-      when :patch
-        Net::HTTP::Patch.new(uri)
+      when :put
+        Net::HTTP::Put.new(uri)
       end
     end
 
