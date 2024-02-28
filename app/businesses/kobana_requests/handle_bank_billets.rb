@@ -59,7 +59,7 @@ module KobanaRequests
       request['authorization'] = "Bearer #{Rails.application.credentials.dig(:api, :boletosimples, :access_token)}"
     end
 
-    def request_body(request, method, body)
+    def request_body(request, _method, body)
       request['content-type'] = 'application/json'
       request.body = body.to_json
     end

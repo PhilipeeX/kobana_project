@@ -35,10 +35,10 @@ class BankBilletsController < ApplicationController
     end
   end
 
-
   private
 
   def billet_params
-    params.permit(:id, :amount, :expire_at, :description, :customer_person_name, :customer_cnpj_cpf, :customer_state, :customer_city_name, :customer_zipcode, :customer_address, :customer_neighborhood)
+    params.permit(:id, :amount, :expire_at, :description, :customer_person_name, :customer_cnpj_cpf, :customer_state, :customer_city_name, :customer_zipcode, :customer_address,
+                  :customer_neighborhood)
   end
 end
