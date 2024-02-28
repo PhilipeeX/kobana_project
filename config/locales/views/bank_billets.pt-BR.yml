@@ -15,3 +15,7 @@ pt-BR:
       neighborhood: "Bairro"
     edit:
       title: 'Atualizando Boleto'
+    bank_billet:
+      edit: 'Editar'
+      cancel: 'Cancelar'
+      cancel_confirm: 'Tem certeza que deseja cancelar esse boleto?'

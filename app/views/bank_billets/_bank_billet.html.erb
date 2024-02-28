@@ -9,5 +9,7 @@
   <td><%= billet['customer_zipcode'] %></td>
   <td><%= billet['customer_address'] %></td>
   <td><%= billet['customer_neighborhood'] %></td>
-  <td><%= link_to 'editar', edit_bank_billet_path(billet['id']) %></td>
+  <td><%= link_to t('.edit'), edit_bank_billet_path(billet['id']) %></td>
+  <td><%= link_to t('.cancel'), bank_billet_path(billet['id']),
+                  data: { turbo_method: :delete, turbo_confirm: t('.cancel_confirm') } %></td>
 </tr>
