@@ -1,24 +1,49 @@
-<h1><%= t '.title' %></h1>
-
-<%= link_to t('.create_bank_billet'), new_bank_billet_path %>
-<table>
-  <thead>
-  <tr>
-    <th><%= t '.status' %></th>
-    <th><%= t '.value' %></th>
-    <th><%= t '.due_date' %></th>
-    <th><%= t '.name' %></th>
-    <th><%= t '.cpf_cnpj' %></th>
-    <th><%= t '.state' %></th>
-    <th><%= t '.city' %></th>
-    <th><%= t '.cep' %></th>
-    <th><%= t '.address' %></th>
-    <th><%= t '.neighborhood' %></th>
-  </tr>
-  </thead>
-  <tbody>
-    <% @billets.each do |billet| %>
-      <%= render 'bank_billet', billet: billet %>
-    <% end %>
-  </tbody>
-</table>
+<section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
+  <div class="mx-auto max-w-screen-2xl px-4 lg:px-28">
+    <h1 class="font-bold text-4xl mb-4"><%= t('.title') %></h1>
+    <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg">
+      <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
+        <div class="w-full md:w-1/2">
+        </div>
+        <div class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
+          <%= button_to new_bank_billet_path, method: :get, class: "flex items-center justify-center text-white bg-blue-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800" do %>
+            <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path clip-rule="evenodd" fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"/>
+            </svg>
+            <%= t('.create_bank_billet') %>
+          <% end %>
+        </div>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+            <th scope="col" class="px-4 py-3" ><%= t '.status' %></th>
+            <th scope="col" class="px-4 py-3" ><%= t '.value' %></th>
+            <th scope="col" class="px-4 py-3" ><%= t '.due_date' %></th>
+            <th scope="col" class="px-4 py-3" ><%= t '.name' %></th>
+            <th scope="col" class="px-4 py-3" ><%= t '.cpf_cnpj' %></th>
+            <th scope="col" class="px-4 py-3" ><%= t '.state' %></th>
+            <th scope="col" class="px-4 py-3" ><%= t '.city' %></th>
+            <th scope="col" class="px-4 py-3" ><%= t '.cep' %></th>
+            <th scope="col" class="px-4 py-3" ><%= t '.address' %></th>
+            <th scope="col" class="px-4 py-3" ><%= t '.neighborhood' %></th>
+            <th scope="col" class="px-4 py-3 flex justify-end"><%= 'Ações' %></th>
+          </tr>
+          </thead>
+          <tbody>
+            <% @billets.each do |billet| %>
+              <%= render 'bank_billet', billet: billet %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+<!--        <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4" aria-label="Table navigation">-->
+<!--          <span class="text-sm font-normal text-gray-500 dark:text-gray-400">-->
+            <%#= page_entries_info @coolers %>
+<!--          </span>-->
+          <%#= paginate @coolers, window: 1 , outer_window: 1%>
+<!--        </nav>-->
+    </div>
+  </div>
+</section>
