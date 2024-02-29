@@ -12,9 +12,9 @@ class BankBilletsController < ApplicationController
 
     if response_data[:success]
       flash.now[:success] = t('.create')
-      redirect_to action: 'index'
+      redirect_to bank_billets_path
     else
-      flash[:error] = response_data[:error_messages]
+      flash.now[:error] = response_data[:error_messages]
       render :new, status: :unprocessable_entity
     end
   end
