@@ -8,7 +8,7 @@
   <td class="px-4 py-3"> <%= number_to_currency(billet['amount'], unit: 'R$', delimiter: '.', separator: ',') %></td>
   <td class="px-4 py-3"> <%= DateTime.parse(billet['expire_at']).strftime('%d/%m/%Y') %></td>
   <td class="px-4 py-3"> <%= billet['customer_person_name'] %></td>
-  <td class="px-4 py-3"> <%= billet['customer_cnpj_cpf'] %></td>
+  <td class="px-4 py-3 w-32"> <%= billet['customer_cnpj_cpf'] %></td>
   <td class="px-4 py-3"> <%= billet['customer_state'] %></td>
   <td class="px-4 py-3"> <%= billet['customer_city_name'] %></td>
   <td class="px-4 py-3"> <%= billet['customer_zipcode'] %></td>
