@@ -36,3 +36,6 @@ group :test do
   gem 'webmock'
   gem 'vcr'
 end
+
+gem 'tailwindcss-rails', '~> 2.3'
+gem 'foreman'

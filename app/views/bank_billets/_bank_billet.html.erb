@@ -1,15 +1,36 @@
-<tr>
-  <td><%= billet['status'] %></td>
-  <td><%= billet['amount'] %></td>
-  <td><%= billet['expire_at'] %></td>
-  <td><%= billet['customer_person_name'] %></td>
-  <td><%= billet['customer_cnpj_cpf'] %></td>
-  <td><%= billet['customer_state'] %></td>
-  <td><%= billet['customer_city_name'] %></td>
-  <td><%= billet['customer_zipcode'] %></td>
-  <td><%= billet['customer_address'] %></td>
-  <td><%= billet['customer_neighborhood'] %></td>
-  <td><%= link_to t('.edit'), edit_bank_billet_path(billet['id']) %></td>
-  <td><%= link_to t('.cancel'), bank_billet_path(billet['id']),
-                  data: { turbo_method: :delete, turbo_confirm: t('.cancel_confirm') } %></td>
+<tr class="border-b dark:border-gray-700 text-center">
+  <td class="px-4 py-3">
+    <% status_color_class = billet['status'] == 'canceled' ? 'bg-red-500' : 'bg-blue-500' %>
+    <span class="inline-block py-1 rounded text-white text-center text-xs font-semibold <%= status_color_class %> w-20">
+      <%= t ".status.#{billet['status']}" %>
+    </span>
+  </td>
+  <td class="px-4 py-3"> <%= number_to_currency(billet['amount'], unit: 'R$', delimiter: '.', separator: ',') %></td>
+  <td class="px-4 py-3"> <%= DateTime.parse(billet['expire_at']).strftime('%d/%m/%Y') %></td>
+  <td class="px-4 py-3"> <%= billet['customer_person_name'] %></td>
+  <td class="px-4 py-3"> <%= billet['customer_cnpj_cpf'] %></td>
+  <td class="px-4 py-3"> <%= billet['customer_state'] %></td>
+  <td class="px-4 py-3"> <%= billet['customer_city_name'] %></td>
+  <td class="px-4 py-3"> <%= billet['customer_zipcode'] %></td>
+  <td class="px-4 py-3"> <%= billet['customer_address'] %></td>
+  <td class="px-4 py-3"> <%= billet['customer_neighborhood'] %></td>
+
+  <td class="px-4 py-3 flex items-center justify-end">
+    <button id="<%= billet['id'] %>-dropdown-button" data-dropdown-toggle="<%= billet['id'] %>-dropdown" class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100" type="button">
+      <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"/>
+      </svg>
+    </button>
+    <div id="<%= billet['id'] %>-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+        <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="<%= billet['id'] %>-dropdown-button">
+          <li>
+            <%= link_to t('.edit'), edit_bank_billet_path(billet['id']), class: "block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" %>
+          </li>
+        </ul>
+        <div class="py-1">
+          <%= link_to t('.cancel'), bank_billet_path(billet['id']),
+                      data: { turbo_method: :delete, turbo_confirm: t('.cancel_confirm') }, class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" %>
+        </div>
+    </div>
+  </td>
 </tr>
