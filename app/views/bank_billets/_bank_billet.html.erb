@@ -1,7 +1,12 @@
-<tr class="border-b dark:border-gray-700">
-  <td class="px-4 py-3"> <%= billet['status'] %></td>
-  <td class="px-4 py-3"> <%= billet['amount'] %></td>
-  <td class="px-4 py-3"> <%= billet['expire_at'] %></td>
+<tr class="border-b dark:border-gray-700 text-center">
+  <td class="px-4 py-3">
+    <% status_color_class = billet['status'] == 'canceled' ? 'bg-red-500' : 'bg-blue-500' %>
+    <span class="inline-block py-1 rounded text-white text-center text-xs font-semibold <%= status_color_class %> w-20">
+      <%= t ".status.#{billet['status']}" %>
+    </span>
+  </td>
+  <td class="px-4 py-3"> <%= number_to_currency(billet['amount'], unit: 'R$', delimiter: '.', separator: ',') %></td>
+  <td class="px-4 py-3"> <%= DateTime.parse(billet['expire_at']).strftime('%d/%m/%Y') %></td>
   <td class="px-4 py-3"> <%= billet['customer_person_name'] %></td>
   <td class="px-4 py-3"> <%= billet['customer_cnpj_cpf'] %></td>
   <td class="px-4 py-3"> <%= billet['customer_state'] %></td>
