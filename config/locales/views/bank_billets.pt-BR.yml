@@ -1,9 +1,6 @@
 pt-BR:
   bank_billets:
-    index:
-      create_bank_billet: 'Criar boleto'
-      title: 'Lista de Boletos'
-      status: "Status"
+    defaults:
       value: "Valor"
       due_date: "Data de Vencimento"
       name: "Nome"
@@ -13,6 +10,13 @@ pt-BR:
       cep: "CEP"
       address: "Endereço"
       neighborhood: "Bairro"
+      description: 'Descrição'
+      send: 'Enviar'
+      back: 'Voltar'
+    index:
+      create_bank_billet: 'Criar boleto'
+      title: 'Lista de Boletos'
+      status: "Status"
     edit:
       title: 'Atualizando Boleto'
     bank_billet:
@@ -22,3 +26,6 @@ pt-BR:
       status:
         canceled: 'Cancelado'
         opened: 'Aberto'
+    new:
+      title: 'Criando novo boleto'
+

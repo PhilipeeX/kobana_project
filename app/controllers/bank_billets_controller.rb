@@ -11,10 +11,10 @@ class BankBilletsController < ApplicationController
     response_data = BankBilletsHelper.process_response(response.body)
 
     if response_data[:success]
-      flash[:notice] = t('.create')
-      redirect_to action: 'index'
+      flash.now[:success] = t('.create')
+      redirect_to bank_billets_path
     else
-      flash[:notice] = response_data[:error_messages]
+      flash.now[:error] = response_data[:error_messages]
       render :new, status: :unprocessable_entity
     end
   end
@@ -29,9 +29,9 @@ class BankBilletsController < ApplicationController
 
     if response_data[:success]
       session.delete(:billet_id)
-      redirect_to bank_billets_path, notice: t('.update')
+      redirect_to bank_billets_path, flash[:success] = t('.update')
     else
-      flash.now[:notice] = response_data[:error_messages]
+      flash.now[:error] = response_data[:error_messages]
       render :edit, status: :unprocessable_entity
     end
   end
@@ -39,10 +39,11 @@ class BankBilletsController < ApplicationController
   def destroy
     response = KobanaRequests::HandleBankBillets.call(:destroy, params[:id])
     if response.code == '204'
-      redirect_to bank_billets_path, notice: t('.cancel_success')
+      flash.now[:success] = t('.cancel_success')
     else
-      redirect_to bank_billets_path, notice: t('.cancel_failure')
+      flash.now[:error] = t('.cancel_failure')
     end
+    redirect_to bank_billets_path
   end
 
   private
