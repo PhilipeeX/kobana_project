@@ -1,53 +1,59 @@
-<%= form_with url: bank_billets_path, method: :post do |form| %>
-  <div>
-    <%= form.label :amount %>
-    <%= form.number_field :amount, step: 'any' %>
-  </div>
+<section class="bg-white dark:bg-gray-900">
+  <div class="py-8 px-4 mx-auto max-w-md lg:py-16">
+    <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Criando novo boleto</h2>
+    <%= form_with url: bank_billets_path, method: :post do |form| %>
+      <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+        <div class="sm:col-span-2">
+          <%= form.label 'Valor', class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
+          <%= form.number_field :amount, step: 'any', class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500', placeholder:'Ex.: R$ 860,20', required: true %>
+        </div>
 
-  <div>
-    <%= form.label :expire_at %>
-    <%= form.date_field :expire_at %>
-  </div>
+        <div class="w-full">
+          <%= form.label 'Data', class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
+          <%= form.date_field :expire_at, class: 'datepicker datepicker-autohide bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500', placeholder: 'Escolha uma data', required: true %>
+        </div>
 
-  <div>
-    <%= form.label :customer_person_name %>
-    <%= form.text_field :customer_person_name %>
-  </div>
+        <div class="w-full">
+          <%= form.label 'Nome do cliente' %>
+          <%= form.text_field :customer_person_name, class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500' %>
+        </div>
 
-  <div>
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
+        <div>
+          <%= form.label 'Estado', class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
+          <%= form.select :customer_state, options_for_select(BankBilletsHelper.state_options), {}, class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500' %>
+        </div>
 
-  <div>
-    <%= form.label :customer_cnpj_cpf %>
-    <%= form.text_field :customer_cnpj_cpf %>
-  </div>
+        <div class="w-full">
+          <%= form.label 'Cidade' %>
+          <%= form.text_field :customer_city_name, class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500' %>
+        </div>
 
-  <div>
-    <%= form.label :customer_state %>
-    <%= form.text_field :customer_state %>
-  </div>
+        <div class="w-full">
+          <%= form.label :customer_cnpj_cpf %>
+          <%= form.text_field :customer_cnpj_cpf, class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500' %>
+        </div>
 
-  <div>
-    <%= form.label :customer_city_name %>
-    <%= form.text_field :customer_city_name %>
-  </div>
+        <div class="w-full">
+          <%= form.label 'CEP' %>
+          <%= form.text_field :customer_zipcode, class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500' %>
+        </div>
 
-  <div>
-    <%= form.label :customer_zipcode %>
-    <%= form.text_field :customer_zipcode %>
-  </div>
+        <div class="w-full">
+          <%= form.label 'Endereço' %>
+          <%= form.text_field :customer_address, class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500' %>
+        </div>
 
-  <div>
-    <%= form.label :customer_address %>
-    <%= form.text_field :customer_address %>
-  </div>
+        <div class="w-full">
+          <%= form.label 'Bairro' %>
+          <%= form.text_field :customer_neighborhood, class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500' %>
+        </div>
 
-  <div>
-    <%= form.label :customer_neighborhood %>
-    <%= form.text_field :customer_neighborhood %>
+        <div class="sm:col-span-2">
+          <%= form.label 'Descrição', class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
+          <%= form.text_area :description, class: 'block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500', placeholder: 'Insira a descrição aqui', rows: 4 %>
+        </div>
+      </div>
+      <%= form.submit "Enviar", class: "cursor-pointer inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800" %>
+  <% end %>
   </div>
-
-  <%= form.submit %>
-<% end %>
+</section>

@@ -29,4 +29,37 @@ module BankBilletsHelper
       { success: false, error_messages: I18n.t('bank_billets_helper.error_message') }
     end
   end
+
+  def self.state_options
+    [
+      ['Todos os estados', 'all'],
+      %w[Acre AC],
+      %w[Alagoas AL],
+      %w[Amapá AP],
+      %w[Amazonas AM],
+      %w[Bahia BA],
+      ['Ceará', 'CE'],
+      ['Distrito Federal', 'DF'],
+      ['Espírito Santo', 'ES'],
+      ['Goiás', 'GO'],
+      ['Maranhão', 'MA'],
+      ['Mato Grosso', 'MT'],
+      ['Mato Grosso do Sul', 'MS'],
+      ['Minas Gerais', 'MG'],
+      ['Pará', 'PA'],
+      ['Paraíba', 'PB'],
+      ['Paraná', 'PR'],
+      ['Pernambuco', 'PE'],
+      ['Piauí', 'PI'],
+      ['Rio de Janeiro', 'RJ'],
+      ['Rio Grande do Norte', 'RN'],
+      ['Rio Grande do Sul', 'RS'],
+      ['Rondônia', 'RO'],
+      ['Roraima', 'RR'],
+      ['Santa Catarina', 'SC'],
+      ['São Paulo', 'SP'],
+      ['Sergipe', 'SE'],
+      ['Tocantins', 'TO']
+    ]
+  end
 end
