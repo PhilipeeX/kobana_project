@@ -71,18 +71,22 @@ Acesse a aplicação em localhost porta 3000
 #
 > [!TIP]
 > - [x] Deverá ter algum CSS/JavaScript deixando as telas bonitinhas.<br>
-    > <a href="https://github.com/PhilipeeX/kobana_project/pull/21" target="_blank">Pull Request</a>
+    > <a href="https://github.com/PhilipeeX/kobana_project/pull/16" target="_blank">Pull Request</a>
 #
 > [!TIP]
-> #### Próximas tarefas:
+> #### Se eu tivesse mais tempo essas seriam as próximas tarefas:
+> - [ ] Responder ao webhook da rota de atualização de boleto com status referente.
+> - [ ] Implementar as requisições da API via gem boleto_simples.
+> - [ ] Configurar cache para não atingir limite das requisições.
+> - [ ] Implementar funcionalidade que permite exibir o boleto para o usuário.
 > - [ ] Implementar os teste no pipeline de CI/CD.
 > - [ ] Executar a aplicação em um contêiner Docker com docker-compose.
-> - [ ] Responder ao webhook da rota de atualização de boleto com status referente.
 > - <a href="https://github.com/users/PhilipeeX/projects/41/views/1" target="_blank">Board das tarefas</a>
 > 
 ## Observações e destaques
 
 - Minha principal dificuldade tem sido ajustar a resposta ao webhook de atualização de boleto. Num primeiro momento, consegui receber o webhook com o "ping", mas, por alguma razão, não estou mais recebendo. Idealmente, se houvesse mais tempo, me dedicaria mais pra melhorar meu entendimento na documentação da API.
+- Acredito que seja importante informar que tentei utilizar a gem boleto_simples, porém enfrentei alguns erros e na documentação da API versão 1 a requisição exemplo é: `BoletoSimples::Extra.userinfo` ao tentar realizar a requisição recebo `uninitialized constant BoletoSimples::Extra` então pra não perder mt tempo decidi não seguir por esse caminho, com certeza com mais tempo iria tentar implementar a gem e também configurar o cache para não atingir o limite de requisições.
 
 ## Github Workflow
 O fluxo de trabalho e como as tarefas foram desenvolvidas pode ser acessado em: <br> 
