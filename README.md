@@ -74,7 +74,7 @@ Acesse a aplicação em localhost porta 3000
     > <a href="https://github.com/PhilipeeX/kobana_project/pull/16" target="_blank">Pull Request</a>
 #
 > [!TIP]
-> #### Se eu tivesse mais tempo essas seriam as próximas tarefas:
+> #### Essas seriam as próximas tarefas:
 > - [ ] Responder ao webhook da rota de atualização de boleto com status referente.
 > - [ ] Implementar as requisições da API via gem boleto_simples.
 > - [ ] Configurar cache para não atingir limite das requisições.
