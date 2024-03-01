@@ -1,0 +1,31 @@
+pt-BR:
+  bank_billets:
+    defaults:
+      value: "Valor"
+      due_date: "Data de Vencimento"
+      name: "Nome"
+      cpf_cnpj: "CPF/CNPJ"
+      state: "Estado"
+      city: "Cidade"
+      cep: "CEP"
+      address: "Endereço"
+      neighborhood: "Bairro"
+      description: 'Descrição'
+      send: 'Enviar'
+      back: 'Voltar'
+    index:
+      create_bank_billet: 'Criar boleto'
+      title: 'Lista de Boletos'
+      status: "Status"
+    edit:
+      title: 'Atualizando Boleto'
+    bank_billet:
+      edit: 'Editar'
+      cancel: 'Cancelar'
+      cancel_confirm: 'Tem certeza que deseja cancelar esse boleto?'
+      status:
+        canceled: 'Cancelado'
+        opened: 'Aberto'
+    new:
+      title: 'Criando novo boleto'
+

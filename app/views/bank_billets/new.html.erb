@@ -1,0 +1,62 @@
+<section class="bg-white dark:bg-gray-900">
+  <div class="py-8 px-4 mx-auto max-w-md lg:py-16">
+    <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white"><%= t('.title') %></h2>
+    <%= form_with url: bank_billets_path, method: :post do |form| %>
+      <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+        <div class="sm:col-span-2">
+          <%= form.label t('bank_billets.defaults.value'), class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
+          <%= form.number_field :amount, step: 'any', class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500', placeholder:'Ex.: R$ 860,20', required: true %>
+        </div>
+
+        <div class="w-full">
+          <%= form.label t('bank_billets.defaults.due_date'), class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
+          <%= form.date_field :expire_at, class: 'datepicker datepicker-autohide bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500', placeholder: 'Escolha uma data', required: true %>
+        </div>
+
+        <div class="w-full">
+          <%= form.label t('bank_billets.defaults.name') %>
+          <%= form.text_field :customer_person_name, class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500' %>
+        </div>
+
+        <div>
+          <%= form.label t('bank_billets.defaults.state'), class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
+          <%= form.select :customer_state, options_for_select(BankBilletsHelper.state_options), {}, class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500' %>
+        </div>
+
+        <div class="w-full">
+          <%= form.label t('bank_billets.defaults.city') %>
+          <%= form.text_field :customer_city_name, class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500' %>
+        </div>
+
+        <div class="w-full">
+          <%= form.label t('bank_billets.defaults.cpf_cnpj') %>
+          <%= form.text_field :customer_cnpj_cpf, class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500' %>
+        </div>
+
+        <div class="w-full">
+          <%= form.label t('bank_billets.defaults.cep') %>
+          <%= form.text_field :customer_zipcode, class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500' %>
+        </div>
+
+        <div class="w-full">
+          <%= form.label t('bank_billets.defaults.address') %>
+          <%= form.text_field :customer_address, class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500' %>
+        </div>
+
+        <div class="w-full">
+          <%= form.label t('bank_billets.defaults.neighborhood') %>
+          <%= form.text_field :customer_neighborhood, class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500' %>
+        </div>
+
+        <div class="sm:col-span-2">
+          <%= form.label t('bank_billets.defaults.description'), class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
+          <%= form.text_area :description, class: 'block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500', placeholder: 'Insira a descrição aqui', rows: 4 %>
+        </div>
+      </div>
+      <%= form.submit t('bank_billets.defaults.send'), class: "cursor-pointer inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800" %>
+  <% end %>
+    <div>
+      <%= link_to t('bank_billets.defaults.back'), bank_billets_path, class: 'cursor-pointer inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-gray-500 rounded-lg focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-900 hover:bg-gray-800' %>
+    </div>
+  </div>
+</section>
