@@ -60,7 +60,6 @@ Acesse a aplicação em localhost porta 3000
 [Rubyonrails.yml](https://github.com/PhilipeeX/kobana_project/blob/release/v0.1.0/.github/workflows/rubyonrails.yml)
 
 - Verifica a qualidade do código usando linters como rubocop.
-- Futuramente com mais tempo seria configurado para testar a aplicação com RSpec.
 
 # Atribuições
 
@@ -84,7 +83,7 @@ Acesse a aplicação em localhost porta 3000
 ## Observações e destaques
 
 - Minha principal dificuldade tem sido ajustar a resposta ao webhook de atualização de boleto. Num primeiro momento, consegui receber o webhook com o "ping", mas, por alguma razão, não estou mais recebendo. Idealmente, se houvesse mais tempo, me dedicaria mais pra melhorar meu entendimento na documentação da API.
-<br>
+
 ## Github Workflow
 O fluxo de trabalho e como as tarefas foram desenvolvidas pode ser acessado em: <br> 
 <a href="https://github.com/users/PhilipeeX/projects/41/views/1" target="_blank">Board das tarefas</a>
