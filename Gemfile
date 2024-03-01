@@ -22,6 +22,7 @@ group :development, :test do
   gem 'ffaker', '~> 2.21'
   gem 'brakeman'
   gem 'bundler-audit'
+  gem 'dotenv'
 end
 
 group :development do

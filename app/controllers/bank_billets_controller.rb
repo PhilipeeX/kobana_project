@@ -29,7 +29,7 @@ class BankBilletsController < ApplicationController
 
     if response_data[:success]
       session.delete(:billet_id)
-      redirect_to bank_billets_path, flash[:success] = t('.update')
+      redirect_to bank_billets_path, flash: { success: t('.update') }
     else
       flash.now[:error] = response_data[:error_messages]
       render :edit, status: :unprocessable_entity

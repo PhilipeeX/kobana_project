@@ -58,7 +58,7 @@ module KobanaRequests
 
     def request_headers(request)
       request['accept'] = 'application/json'
-      request['authorization'] = "Bearer #{Rails.application.credentials.dig(:api, :boletosimples, :access_token)}"
+      request['authorization'] = "Bearer #{ENV['KOBANA_ACCESS_TOKEN']}"
     end
 
     def request_body(request, _method, body)

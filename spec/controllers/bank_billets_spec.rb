@@ -35,7 +35,7 @@ RSpec.describe BankBilletsController, type: :controller do
     context 'with valid parameters' do
       it 'creates a new BankBillet and redirects to index', :vcr do
         post :create, params: valid_params
-        expect(response).to redirect_to(action: 'index')
+        expect(response).to redirect_to(bank_billets_path)
       end
     end
 
@@ -67,7 +67,7 @@ RSpec.describe BankBilletsController, type: :controller do
 
       expect(response.status).to eq 302
       expect(response).to redirect_to(bank_billets_path)
-      expect(flash[:notice]).to eq(I18n.t('bank_billets.update'))
+      expect(flash[:success]).to eq(I18n.t('bank_billets.update'))
     end
 
     xit 'doesnt update bank_billets with invalid params', :vcr do
@@ -84,7 +84,7 @@ RSpec.describe BankBilletsController, type: :controller do
 
       expect(response.status).to eq 302
       expect(response).to redirect_to(bank_billets_path)
-      expect(flash[:notice]).to eq(I18n.t('bank_billets.cancel_success'))
+      expect(flash[:success]).to eq(I18n.t('bank_billets.cancel_success'))
     end
   end
 end
